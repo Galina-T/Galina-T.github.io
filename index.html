@@ -2,15 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script defer="defer" src="./sync.js"></script>
-    <script defer="defer" src="main.js"></script>
-    <link href="main.css" rel="stylesheet" />
-  </head>
+    <script defer src="./sync.js"></script>
+  <script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
   <body>
-    <input type="checkbox" id="eye" class="hide" /> <label for="eye"></label>
+    <input type="checkbox" id="eye" class="hide" />
+    <label for="eye"></label>
     <div class="control">
+      <div class="lastVersions">
+        <div class="lastVersions_select-btn">
+          <span class="lastVersions_btn-text">прошлые релизы</span>
+        </div>
+        <ul class="lastVersions_list"></ul>
+      </div>
       <div class="selectVersions">
         <select name="selectVersions">
           <option value="all">версия релиза</option>
@@ -26,11 +31,11 @@
         />
       </div>
       <form method="post" enctype="multipart/form-data">
-        <label class="input-file"
-          ><span class="input-file-text" type="text"></span>
+        <label class="input-file">
+          <span class="input-file-text" type="text"></span>
           <input type="file" name="file" id="csvFile" accept=".csv" />
-          <span class="input-file-btn">Выберите файл</span></label
-        >
+          <span class="input-file-btn">Выберите файл</span>
+        </label>
       </form>
     </div>
     <div id="container" class="container">
@@ -62,21 +67,68 @@
         <ul class="affectedServices_list"></ul>
       </div>
     </div>
-    <template id="optionVersion"><option class="option"></option></template
-    ><template id="countTypeTemplate"
-      ><li>
+
+    <template id="optionLastVersion">
+      <li class="lastVersions_item">
+        <span class="lastVersions_checkbox">
+          <i class="fa-solid fa-check check-icon"></i>
+        </span>
+        <span class="lastVersions_text"></span>
+      </li>
+    </template>
+
+    <template id="optionVersion">
+      <option class="option"></option>
+    </template>
+
+    <template id="countTypeTemplate">
+      <li>
         <span class="type_count"></span>
-        <span class="type_title"></span></li></template
-    ><template id="statusTemplate"
-      ><div>
-        <span class="count"></span> <span class="status"></span>
-        <ul class="list_tasks"></ul></div></template
-    ><template id="taskTemplate"
-      ><li class="task">
-        <a class="task_link" href="#"
-          ><span class="icon"></span>
-          <p class="task_text"></p
-        ></a></li></template
-    ><template id="serviceTypeTemplate"><li class="service"></li></template>
+        <span class="type_title"></span>
+      </li>
+    </template>
+
+    <template id="statusTemplate">
+      <div>
+        <span class="count"></span>
+        <span class="status"></span>
+        <div>
+          <div class="activeVersionsTasks">
+            <ul class="list_tasks"></ul>
+          </div>
+          <div class="lastVersionsTasks"></div>
+        </div>
+      </div>
+    </template>
+
+    <template id="lastTasksTemplate">
+      <div>
+        <span class="lastVersion_name"></span>
+        <ul class="list_tasks"></ul>
+      </div>
+    </template>
+
+    <template id="taskTemplate">
+      <li class="task">
+        <a class="task_link" href="#">
+          <span class="icon"></span>
+          <p class="task_text"></p>
+        </a>
+      </li>
+    </template>
+
+    <template id="serviceTypeTemplate">
+      <li class="service"></li>
+    </template>
   </body>
 </html>
+
+<!-- <template id="statusBacklogTemplate">
+  <div>
+    <span class="count"></span>
+    <span class="status"></span>
+    <div class="tasks">
+      <ul class="list_tasks"></ul>
+    </div>
+  </div>
+</template> -->
