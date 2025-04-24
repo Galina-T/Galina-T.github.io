@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Document</title>
+    <script defer="defer" src="./sync.js"></script>
+    <script defer="defer" src="main.js"></script>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <input type="checkbox" id="eye" class="hide" /> <label for="eye"></label>
+    <div class="control">
+      <div class="selectVersions">
+        <select name="selectVersions">
+          <option value="all">версия релиза</option>
+        </select>
+      </div>
+      <div class="date">
+        <input
+          type="date"
+          id="date_field"
+          name="trip-start"
+          value=""
+          min="2024-20-10"
+        />
+      </div>
+      <form method="post" enctype="multipart/form-data">
+        <label class="input-file"
+          ><span class="input-file-text" type="text"></span>
+          <input type="file" name="file" id="csvFile" accept=".csv" />
+          <span class="input-file-btn">Выберите файл</span></label
+        >
+      </form>
+    </div>
+    <div id="container" class="container">
+      <h1>
+        Отчёт по релизу <span id="releaseDate">nnn</span>
+        <span class="teamName">Gallllery</span>
+      </h1>
+      <div class="progress">
+        <span class="progress_start"></span
+        ><span class="progress_finish"></span>
+      </div>
+      <div class="block_total">
+        <p class="title">
+          На прод было запланировано выпустить
+          <span class="total_tasks"></span> <span class="ending"></span>:
+        </p>
+        <ul class="list_types"></ul>
+      </div>
+      <div class="statuses">
+        <div class="statuses_block statuses_block__prod">
+          <h3 class="statuses_block_title">уже на prod окружении</h3>
+        </div>
+        <div class="statuses_block statuses_block__backlog">
+          <h3 class="statuses_block_title">не успели в этот релиз</h3>
+        </div>
+      </div>
+      <div class="affectedServices">
+        <p class="affectedServices_title">Затронутые сервисы:</p>
+        <ul class="affectedServices_list"></ul>
+      </div>
+    </div>
+    <template id="optionVersion"><option class="option"></option></template
+    ><template id="countTypeTemplate"
+      ><li>
+        <span class="type_count"></span>
+        <span class="type_title"></span></li></template
+    ><template id="statusTemplate"
+      ><div>
+        <span class="count"></span> <span class="status"></span>
+        <ul class="list_tasks"></ul></div></template
+    ><template id="taskTemplate"
+      ><li class="task">
+        <a class="task_link" href="#"
+          ><span class="icon"></span>
+          <p class="task_text"></p
+        ></a></li></template
+    ><template id="serviceTypeTemplate"><li class="service"></li></template>
+  </body>
+</html>
